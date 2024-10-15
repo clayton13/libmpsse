@@ -235,7 +235,7 @@ static struct mpsse_context *OpenIndexInternal(int vid, int pid, enum modes mode
  */
 void Close(struct mpsse_context *mpsse)
 {
-	if(mpsse)
+	if(mpsse && mpsse->ftdi.usb_dev != 0)
 	{
 		ftdi_set_bitmode(&mpsse->ftdi, 0, BITMODE_RESET);
 		ftdi_usb_close(&mpsse->ftdi);
